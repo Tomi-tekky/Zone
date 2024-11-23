@@ -2,6 +2,7 @@ import com.aventstack.extentreports.Status;
 import com.zone.base.BaseTest;
 import com.zone.pages.LandingPage;
 import com.zone.utils.ConfigReader;
+import com.zone.utils.RandomDataGenerator;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -22,19 +23,39 @@ public class LambdaTest extends BaseTest {
         test = extent.createTest("ClickShopByCategory");
     }
 
+
     @Test
     public void EcommerceAutomation() throws InterruptedException {
         landingPage = new LandingPage(getDriver());
 
+
+        // Generate random test data
+        String randomFirstname = RandomDataGenerator.getRandomString("John", 1000);
+        String randomLastname = RandomDataGenerator.getRandomString("Doe", 1000);
+        String randomEmail = RandomDataGenerator.getRandomEmail("example.com");
+        String randomPassword = RandomDataGenerator.getRandomString("Testing", 1000);
+        String randomConfirmPassword = RandomDataGenerator.getRandomString("Testing", 1000);
+        String randomPhone = RandomDataGenerator.getRandomPhoneNumber();
+
+
+
+        // Print the random data for debugging or logs
+        System.out.println("Random Username: " + randomFirstname);
+        System.out.println("Random Username: " + randomLastname);
+        System.out.println("Random Email: " + randomEmail);
+        System.out.println("Random Phone: " + randomPhone);
+        System.out.println("Random Password: " + randomPassword);
+        System.out.println("Random ConfirmPassword: " + randomConfirmPassword);
+
+
+
         // Test Data
         String url = testConfigs.getProperty("url");
-        String Firstname = testConfigs.getProperty("firstname");
-        String Lastname = testConfigs.getProperty("lastname");
-        String Email = testConfigs.getProperty("email");
-        String Phone = testConfigs.getProperty("phone");
-        String Password = testConfigs.getProperty("password");
-
-
+        //String Firstname = testConfigs.getProperty("firstname");
+        //String Lastname = testConfigs.getProperty("lastname");
+        //String Email = testConfigs.getProperty("email");
+        //String Phone = testConfigs.getProperty("phone");
+        //String Password = testConfigs.getProperty("password");
 
 
         logger.info("Opening: " + url);
@@ -67,19 +88,20 @@ public class LambdaTest extends BaseTest {
         landingPage.clickRegister();
         Thread.sleep(2000);
 
+
         //Fill form details
         Assert.assertTrue(firstname.isDisplayed());
-        landingPage.inputFirstname(Firstname);
+        landingPage.inputFirstname(randomFirstname);
         Assert.assertTrue(lastname.isDisplayed());
-        landingPage.inputLastname(Lastname);
+        landingPage.inputLastname(randomLastname);
         Assert.assertTrue(email.isDisplayed());
-        landingPage.inputEmail(Email);
+        landingPage.inputEmail(randomEmail);
         Assert.assertTrue(telephone.isDisplayed());
-        landingPage.inputTelephone(Phone);
+        landingPage.inputTelephone(randomPhone);
         Assert.assertTrue(password.isDisplayed());
-        landingPage.inputPassword(Password);
+        landingPage.inputPassword(randomPassword);
         Assert.assertTrue(ConfirmPassword.isDisplayed());
-        landingPage.ConfirmPassword(Password);
+        landingPage.ConfirmPassword(randomConfirmPassword);
         landingPage.clickAgree();
         landingPage.clickContinue();
         Thread.sleep(3000);
