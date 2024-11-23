@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 
 import java.util.Properties;
 
+import static com.zone.pages.LandingPage.*;
+
 
 public class LambdaTest extends BaseTest {
     Properties testConfigs = ConfigReader.loadProperties(System.getProperty("user.dir") +"/src/test/resources/config.properties");
@@ -47,8 +49,8 @@ public class LambdaTest extends BaseTest {
         test.log(Status.PASS, "Test completed successfully.");
 
         //Action to select MP3 player
-        landingPage.clickOnMP3Player(LandingPage.SelectMP3Player);
-        // Assert.assertTrue(LandingPage.ShopByCategory.isDisplayed());
+        Assert.assertTrue(SelectMP3Player.isDisplayed());
+        landingPage.clickOnMP3Player(SelectMP3Player);
         Thread.sleep(2000);
         test.log(Status.INFO, "Clicked on MP3 Player");
         test.log(Status.PASS, "Test completed successfully.");
@@ -66,11 +68,17 @@ public class LambdaTest extends BaseTest {
         Thread.sleep(2000);
 
         //Fill form details
+        Assert.assertTrue(firstname.isDisplayed());
         landingPage.inputFirstname(Firstname);
+        Assert.assertTrue(lastname.isDisplayed());
         landingPage.inputLastname(Lastname);
+        Assert.assertTrue(email.isDisplayed());
         landingPage.inputEmail(Email);
+        Assert.assertTrue(telephone.isDisplayed());
         landingPage.inputTelephone(Phone);
+        Assert.assertTrue(password.isDisplayed());
         landingPage.inputPassword(Password);
+        Assert.assertTrue(ConfirmPassword.isDisplayed());
         landingPage.ConfirmPassword(Password);
         landingPage.clickAgree();
         landingPage.clickContinue();
