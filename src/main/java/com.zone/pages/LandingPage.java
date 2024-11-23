@@ -43,6 +43,8 @@ public class LandingPage {
     public static WebElement Agree;
     @FindBy(xpath="//input[@class='btn btn-primary']")
     public static WebElement Continue;
+    @FindBy(xpath = "//a[@class='btn btn-primary'][contains(text(), 'Continue')]")
+    public static WebElement Continue2;
 
 
 
@@ -98,10 +100,8 @@ public class LandingPage {
     public void clickContinue() {
         Continue.click();
     }
-
-    public void formData(String user, String pass) throws InterruptedException {
-
-
+    public void clickContinue2() {
+        Continue2.click();
     }
    }
 
