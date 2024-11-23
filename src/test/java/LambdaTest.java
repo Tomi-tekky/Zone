@@ -33,8 +33,6 @@ public class LambdaTest extends BaseTest {
         String randomFirstname = RandomDataGenerator.getRandomString("John", 1000);
         String randomLastname = RandomDataGenerator.getRandomString("Doe", 1000);
         String randomEmail = RandomDataGenerator.getRandomEmail("example.com");
-        String randomPassword = RandomDataGenerator.getRandomString("Testing", 1000);
-        String randomConfirmPassword = RandomDataGenerator.getRandomString("Testing", 1000);
         String randomPhone = RandomDataGenerator.getRandomPhoneNumber();
 
 
@@ -44,8 +42,7 @@ public class LambdaTest extends BaseTest {
         System.out.println("Random Username: " + randomLastname);
         System.out.println("Random Email: " + randomEmail);
         System.out.println("Random Phone: " + randomPhone);
-        System.out.println("Random Password: " + randomPassword);
-        System.out.println("Random ConfirmPassword: " + randomConfirmPassword);
+
 
 
 
@@ -55,7 +52,7 @@ public class LambdaTest extends BaseTest {
         //String Lastname = testConfigs.getProperty("lastname");
         //String Email = testConfigs.getProperty("email");
         //String Phone = testConfigs.getProperty("phone");
-        //String Password = testConfigs.getProperty("password");
+        String Password = testConfigs.getProperty("password");
 
 
         logger.info("Opening: " + url);
@@ -99,12 +96,14 @@ public class LambdaTest extends BaseTest {
         Assert.assertTrue(telephone.isDisplayed());
         landingPage.inputTelephone(randomPhone);
         Assert.assertTrue(password.isDisplayed());
-        landingPage.inputPassword(randomPassword);
+        landingPage.inputPassword(Password);
         Assert.assertTrue(ConfirmPassword.isDisplayed());
-        landingPage.ConfirmPassword(randomConfirmPassword);
+        landingPage.ConfirmPassword(Password);
         landingPage.clickAgree();
         landingPage.clickContinue();
         Thread.sleep(3000);
+        Assert.assertTrue(Continue2.isDisplayed());
+        landingPage.clickContinue2();
         test.log(Status.INFO, "Clicked on Register");
         test.log(Status.PASS, "Test completed successfully.");
     }
