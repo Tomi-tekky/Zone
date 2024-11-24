@@ -62,4 +62,4 @@ mvn test
 - `src/main/java` - Contains the main application code.
 - `src/test/java` - Contains the test classes.
 - `pom.xml` - Maven project configuration file.
-- - `testng.xml` - Contains the test suite.
+- `testng.xml` - Contains the test suite.
