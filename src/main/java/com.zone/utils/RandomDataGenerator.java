@@ -17,7 +17,7 @@ public class RandomDataGenerator {
     // Generate a random phone number
     public static String getRandomPhoneNumber() {
         Random random = new Random();
-        return "9" + (random.nextInt(900000000) + 100000000); // 10-digit number
+        return "11" + (random.nextInt(900000000) + 100000000); // 10-digit number
     }
 
     // Generate a random UUID
